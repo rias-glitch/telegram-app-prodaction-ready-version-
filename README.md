@@ -72,32 +72,35 @@ telegram-webapp/
 ├── backend/
 │   ├── cmd/
 │   │   ├── app/              # Основной сервер
+│   │   ├── create_test_user/ # Утилита для тестовых пользователей
 │   │   ├── migrate_apply/    # Миграции БД
 │   │   └── ws_smoke/         # Тесты WebSocket
 │   ├── internal/
 │   │   ├── bot/              # Telegram Admin Bot
 │   │   ├── config/           # Конфигурация
-│   │   ├── db/               # PostgreSQL
+│   │   ├── db/               # PostgreSQL подключение
 │   │   ├── domain/           # Модели данных
 │   │   ├── game/             # Игровая логика
 │   │   ├── http/
 │   │   │   ├── handlers/     # API (40+ endpoints)
 │   │   │   └── middleware/   # JWT, Rate Limiting
+│   │   ├── logger/           # Логирование
+│   │   ├── migrations/       # 18 SQL миграций
 │   │   ├── repository/       # Data Access Layer
 │   │   ├── service/          # Бизнес-логика
 │   │   ├── telegram/         # Telegram Auth
 │   │   ├── ton/              # TON интеграция
 │   │   └── ws/               # WebSocket PvP
-│   └── migrations/           # 18 SQL миграций
 │
 └── frontend/
     ├── src/
+    │   ├── api/              # HTTP клиент
     │   ├── components/
     │   │   ├── games/        # Компоненты игр
     │   │   └── ui/           # UI Kit
-    │   ├── pages/            # Страницы
     │   ├── hooks/            # useAuth, useProfile, useWebSocket
-    │   └── api/              # HTTP клиент
+    │   ├── pages/            # Страницы
+    │   └── utils/            # Вспомогательные функции (TON)
     └── vite.config.js
 ```
 
@@ -252,10 +255,15 @@ npm install
 npm run dev
 ```
 
-### Docker
+### Docker (Backend)
 ```bash
-docker-compose up -d
+cd backend
+docker build -t telegram-webapp-api .
+docker run -p 8080:8080 --env-file .env telegram-webapp-api
 ```
+
+### Render.com
+Проект включает `render.yaml` для автоматического деплоя на Render.com.
 
 ---
 
@@ -301,7 +309,7 @@ docker-compose up -d
 | PvP игр | 2 |
 | Валют | 3 (Gems, Coins, GK) |
 | SQL миграций | 18 |
-| Go файлов | 77 |
+| Go файлов | 79 |
 
 ---
 
