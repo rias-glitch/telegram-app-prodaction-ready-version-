@@ -1,0 +1,47 @@
+databases:
+  - name: telegram-webapp-db
+    plan: free
+    databaseName: tg_app
+    user: tg_user
+
+services:
+  # Backend API
+  - type: web
+    name: telegram-webapp-api
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: telegram-webapp-db
+          property: connectionString
+      - key: BOT_TOKEN
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: APP_PORT
+        value: 8080
+
+  # Frontend Static Site
+  - type: web
+    name: telegram-webapp-frontend
+    runtime: static
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: ./frontend/dist
+    pullRequestPreviewsEnabled: true
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      - key: VITE_API_URL
+        sync: false
+      - key: VITE_WS_URL
+        sync: false

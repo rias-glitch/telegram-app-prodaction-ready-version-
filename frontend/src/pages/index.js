@@ -1,0 +1,6 @@
+export { GamesPage } from './GamesPage'
+export { CasesPage } from './CasesPage'
+export { TopPage } from './TopPage'
+export { ProfilePage } from './ProfilePage'
+export { WalletPage } from './WalletPage'
+export { UpgradePage } from './UpgradePage'
