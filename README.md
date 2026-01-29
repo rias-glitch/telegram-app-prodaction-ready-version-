@@ -1,4 +1,4 @@
-# Telegram WebApp Gaming Platform
+# Telegram WebApp HardMine
 
 Полноценная игровая платформа для Telegram Mini Apps с PvE/PvP играми, системой квестов, рефералами и интеграцией TON Blockchain.
 
