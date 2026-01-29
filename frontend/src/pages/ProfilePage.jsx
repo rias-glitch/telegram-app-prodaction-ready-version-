@@ -88,7 +88,7 @@ export function ProfilePage({ user, games, stats, quests, fetchProfile }) {
       return
     }
 
-    const shareUrl = `https://t.me/share/url?url=${encodeURIComponent(referralLink.link)}&text=${encodeURIComponent('Join me in CryptoGames!')}`
+    const shareUrl = `https://t.me/share/url?url=${encodeURIComponent(referralLink.link)}&text=${encodeURIComponent('Join me in HardMine!')}`
 
     // Try openTelegramLink for t.me links
     if (tg?.openTelegramLink) {
