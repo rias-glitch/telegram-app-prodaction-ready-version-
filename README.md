@@ -1,4 +1,4 @@
-# Telegram WebApp Gaming Platform
+# Telegram WebApp HardMine
 
 Полноценная игровая платформа для Telegram Mini Apps с PvE/PvP играми, системой квестов, рефералами и интеграцией TON Blockchain.
 
@@ -24,7 +24,6 @@
 | Mines Pro | PvE | Поле 5x5, настраиваемые мины (1-24), кэшаут |
 | Dice | PvE | Кости с режимами exact/low/high |
 | Wheel | PvE | Колесо фортуны с множителями x0.1 - x10 |
-| Case | Solo | Лутбоксы с призами |
 
 ### PvP (WebSocket)
 
